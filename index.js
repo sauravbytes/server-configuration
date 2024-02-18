@@ -38,3 +38,10 @@ app.post("/add", createBlog);
 app.listen(PORT, () => {
   console.log("server is running in port 4000");
 });
+
+const getBlogs = async(req, res)=>{
+  let data = await db.blogs.findAll();
+  return res.json(data);
+}
+
+app.get("/", getBlogs);
